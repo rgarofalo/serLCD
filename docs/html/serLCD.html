@@ -1,0 +1,342 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>serLCD &mdash; serLCD 1.0.0 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/zerynth.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="serLCD 1.0.0 documentation" href="index.html"/>
+        <link rel="prev" title="serLCD" href="index.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+          <a href="index.html" class="fa fa-home"> serLCD</a>
+        
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">serLCD</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">serLCD</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>serLCD</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="_sources/serLCD.txt" rel="nofollow"> View page source</a>
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <span class="target" id="module-serLCD"></span><div class="section" id="serlcd">
+<h1>serLCD<a class="headerlink" href="#serlcd" title="Permalink to this headline">¶</a></h1>
+<p>This module implements the driver for LCD controller SparkFun Serial Enabled LCD Backpack.</p>
+<p>It implements most all functions from LiquidCrystal and added a few functions of my own</p>
+<p><a class="reference external" href="http://www.sparkfun.com/datasheets/LCD/SerLCD_V2_5.PDF">http://www.sparkfun.com/datasheets/LCD/SerLCD_V2_5.PDF</a>
+.. method:: blinkCursor()</p>
+<blockquote>
+<div>Turn the blinking cursor on</div></blockquote>
+<dl class="method">
+<dt id="serLCD.brightness">
+<code class="descname">brightness</code><span class="sig-paren">(</span><em>brightness_level</em><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.brightness" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">Sets the backlight brightness based on input value. Values range from 1-30. 1=off---30=full brightness</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="serLCD.clear">
+<code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.clear" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">Clear lcd and set to home</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="serLCD.clearLine">
+<code class="descname">clearLine</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.clearLine" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">Clears a single line by writing black spaces then returing cursor to beginning on line.</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="serLCD.cursor">
+<code class="descname">cursor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.cursor" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">Turns the underline cursor on</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="serLCD.noCursor">
+<code class="descname">noCursor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.noCursor" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">Turns the underline cursor off</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="serLCD.setCursor">
+<code class="descname">setCursor</code><span class="sig-paren">(</span><em>row</em>, <em>col</em><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.setCursor" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">Set cursor to specific row and col (start:0)</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="serLCD.display">
+<code class="descname">display</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.display" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">Turn the display on (quickly)</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="serLCD.noDisplay">
+<code class="descname">noDisplay</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.noDisplay" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">Turn the display off (quickly)</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="serLCD.home">
+<code class="descname">home</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.home" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">Returns cursor to home position</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="serLCD.leftToRight">
+<code class="descname">leftToRight</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.leftToRight" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">This is for text that flows Left to Right</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="serLCD.rightToLeft">
+<code class="descname">rightToLeft</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.rightToLeft" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">This is for text that flows Right to Left</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="serLCD.message">
+<code class="descname">message</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.message" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">Send string to LCD. Newline wraps to second line</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="serLCD.moveCursorRight">
+<code class="descname">moveCursorRight</code><span class="sig-paren">(</span><em>position</em><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.moveCursorRight" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">Move cursor right n position</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="serLCD.moveCursorLeft">
+<code class="descname">moveCursorLeft</code><span class="sig-paren">(</span><em>position</em><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.moveCursorLeft" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">Move cursor left n position</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">scrollRight(position,time=0):</code></dt>
+<dt>
+<code class="descname">Scrolls the text on the LCD n positions to the right each time millisecond</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="serLCD.scrollLeft">
+<code class="descname">scrollLeft</code><span class="sig-paren">(</span><em>position</em>, <em>time=0</em><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.scrollLeft" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">Scrolls the text on the LCD n positions to the left each time millisecond</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="serLCD.setType">
+<code class="descname">setType</code><span class="sig-paren">(</span><em>lines</em>, <em>chars</em><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.setType" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">The SerLCD firmware v2.5 supports setting different types of LCD's. This function allows to easily set the type of LCD.</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">writeNextLine(text):</code></dt>
+<dt>
+<code class="descname">Insert the text in new line and moves upwards the text on the LCD</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="serLCD.writeLine">
+<code class="descname">writeLine</code><span class="sig-paren">(</span><em>line</em>, <em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.writeLine" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">Insert the text in the specification row</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">scrollingRightToLeft(speed, delay):</code></dt>
+<dt>
+<code class="descname">Move the text on the LCD from right to left and contrary of n steps if the text exceeds the maximum capacity of line</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">scrollingLeftToRight(speed, delay):</code></dt>
+<dt>
+<code class="descname">Move the text on the LCD from left to right and contrary of n steps if the text exceeds the maximum capacity of line</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="serLCD.scrolling">
+<code class="descname">scrolling</code><span class="sig-paren">(</span><em>speed</em><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.scrolling" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="descname">Scrolls the text on the LCD a position to the right each time millisecond</code></dt>
+<dd></dd></dl>
+
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="serLCD"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright ZERYNTH Team.
+    </p>
+  </div>
+
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ <script type="text/javascript">
+ var vurl
+ if(location.href.indexOf("127.0.0.1")>=0) vurl=location.protocol+"//"+location.host+"/docs"
+ else vurl="http://doc.zerynth.com"
+ $(document).ready(function(){
+                   $('.wy-breadcrumbs a:contains("Docs")').before('<a href="'+vurl+'">Zerynth</a> &#187;')
+                   $('.wy-side-nav-search > a').removeClass("fa-home").removeClass("fa")
+                   $('.wy-side-nav-search').prepend('<div class="viper-circle"><a href="'+vurl+'"><span style="color:#1c5e60" class="zerynth-Logo2"></span></a></div>')
+ })
+ </script>
+
+
+</body>
+</html>

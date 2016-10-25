@@ -1,0 +1,9 @@
+{
+    "copyright": "ZERYNTH Team",
+    "title": "serLCD",
+    "version": "1.0.0",
+    "files":[
+		["serLCD","serLCD.py"]
+	]
+
+}

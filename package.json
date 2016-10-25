@@ -1,0 +1,1 @@
+{"dependencies": {"core.zerynth.stdlib": "r1.0.7"}, "examples": ["lcd"], "name": "serLCD", "whatsnew": "This module implements the driver for LCD controller SparkFun Serial Enabled LCD Backpack."}
