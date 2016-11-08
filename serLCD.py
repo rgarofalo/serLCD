@@ -6,16 +6,40 @@ serLCD
 ********
 
 This module implements the driver for LCD controller SparkFun Serial Enabled LCD Backpack.
-
-It implements most all functions from LiquidCrystal and added a few functions of my own
-
-http://www.sparkfun.com/datasheets/LCD/SerLCD_V2_5.PDF
+It implements most all functions from LiquidCrystal and added a few functions of my own http://www.sparkfun.com/datasheets/LCD/SerLCD_V2_5.PDF
 
 """
 
 import streams
 
 class serLCD():
+    """
+    ==================
+    The serLCD class
+    ==================
+
+.. class:: serLCD(drivername)
+
+    Creates a serLCD instance for controlling a diplay with 2 lines and 16 character through a serial port(es. SERIAL1).
+    The SerLCD currently supports 16 and 20 character wide screens with 2 or 4 lines of display configurable using the appropriate functions.
+
+    Example::
+
+        import streams
+        import serLCD
+
+        error=streams.serial()
+        try:
+
+            lcd=serLCD.lcd(SERIAL1)
+            lcd.clear()
+            lcd.home()
+            lcd.setType(2,16)
+            lcd.writeLine(0,'1234567890')
+
+        except Exception as e:
+            print(e,stream=error)
+     """
 
     # LCD Address
     ADDRESS = 0x27
@@ -73,31 +97,6 @@ class serLCD():
     new_exception(TextOverflow,ValueError,'Maximum length exceeded (limit chars is 40)')
 
 
-    """
-================
-The serLCD class
-================
-
-.. class:: serLCD
-    Creates a serLCD instance for controlling a diplay with 2 lines and 16 character through a serial port(es. SERIAL1).
-    The SerLCD currently supports 16 and 20 character wide screens with 2 or 4 lines of display configurable using the appropriate functions.
-
-    ::
-    import streams
-    import serLCD
-
-    error=streams.serial()
-    try:
-
-        lcd=serLCD.lcd(SERIAL1)
-        lcd.clear()
-        lcd.home()
-        lcd.setType(2,16)
-        lcd.writeLine(0,'1234567890')
-
-    except Exception as e:
-        print(e,stream=error)
-    """
 
     def __init__(self, drivername):
         self._lcd_device = streams.serial(drivername,9600, set_default=False)
@@ -110,15 +109,17 @@ The serLCD class
 
     def blinkCursor(self):
         """
-.. method:: blinkCursor()
-    Turn the blinking cursor on
+            .. method:: blinkCursor()
+
+                Turn the blinking cursor on
         """
         self._command(self.LCD_BLINKON)
 
     def brightness(self, brightness_level):
         """
-.. method:: brightness(brightness_level)
-    Sets the backlight brightness based on input value. Values range from 1-30. 1=off---30=full brightness
+            .. method:: brightness(brightness_level)
+
+                Sets the backlight brightness based on input value. Values range from 1-30. 1=off---30=full brightness
         """
         if brightness_level >= 1 and brightness_level <= 30:
             self._specialCommand(self.LCD_BACKLIGHT | (brightness_level-1))
@@ -129,22 +130,25 @@ The serLCD class
 
     def noblinkCursor(self):
         """
-.. method::noblinkCursor()
-   Turn the blinking cursor off
+            .. method: noblinkCursor()
+
+                Turn the blinking cursor off
         """
         self._command(self.LCD_BLINKOFF)
 
     def clear(self):
         """
-.. method:: clear()
-    Clear lcd and set to home
+            .. method:: clear()
+
+                Clear lcd and set to home
         """
         self._command(self.LCD_CLEARDISPLAY)
 
     def clearLine(self, row):
         """
-.. method:: clearLine()
-    Clears a single line by writing black spaces then returing cursor to beginning on line.
+            .. method:: clearLine()
+
+                Clears a single line by writing black spaces then returing cursor to beginning on line.
 
         """
         if row>=0 and row <= (self._numLines-1):
@@ -160,23 +164,26 @@ The serLCD class
 
     def cursor(self):
         """
-.. method:: cursor()
-    Turns the underline cursor on
+            .. method:: cursor()
+
+                Turns the underline cursor on
 
         """
         self._command(self.LCD_CURSORON)
 
     def noCursor(self):
         """
-.. method:: noCursor()
-    Turns the underline cursor off
+            .. method:: noCursor()
+
+                Turns the underline cursor off
         """
         self._command(self.LCD_CURSOROFF)
 
     def setCursor(self, row, col):
         """
-.. method:: setCursor(row,col)
-    Set cursor to specific row and col (start:0)
+            .. method:: setCursor(row,col)
+
+                Set cursor to specific row and col (start:0)
         """
         self.row_offsets = [0x00, 0x40, 0x14, 0x54]
         if row <= self._numLines:
@@ -186,43 +193,49 @@ The serLCD class
 
     def display(self):
         """
-.. method:: display()
-    Turn the display on (quickly)
+            .. method:: display()
+
+                Turn the display on (quickly)
         """
         self._command(self.LCD_DISPLAYON)
 
     def noDisplay(self):
         """
-.. method:: noDisplay()
-    Turn the display off (quickly)
+            .. method:: noDisplay()
+
+                Turn the display off (quickly)
         """
         self._command(self.LCD_DISPLAYOFF)
 
     def home(self):
         """
-.. method:: home()
-    Returns cursor to home position
+            .. method:: home()
+
+                Returns cursor to home position
         """
         self._command(self.LCD_RETURNHOME)
 
     def leftToRight(self):
         """
-.. method:: leftToRight()
-    This is for text that flows Left to Right
+            .. method:: leftToRight()
+
+                This is for text that flows Left to Right
         """
         self._command(self.LCD_ENTRYMODESET | self.LCD_ENTRYLEFT)
 
     def rightToLeft(self):
         """
-.. method:: rightToLeft()
-    This is for text that flows Right to Left
+            .. method:: rightToLeft()
+
+                This is for text that flows Right to Left
         """
         self._command(self.LCD_ENTRYMODESET & (~self.LCD_ENTRYLEFT))
 
     def message(self, text):
         """
-.. method:: message(text)
-    Send string to LCD. Newline wraps to second line
+            .. method:: message(text)
+
+                Send string to LCD. Newline wraps to second line
         """
         if len(text)<=40:
             for char in text:
@@ -235,8 +248,9 @@ The serLCD class
 
     def moveCursorRight(self,p):
         """
-.. method:: moveCursorRight(position)
-    Move cursor right n position
+            .. method:: moveCursorRight(position)
+
+                Move cursor right n position
         """
         if p > 0:
             n = 0
@@ -248,8 +262,9 @@ The serLCD class
 
     def moveCursorLeft(self,p):
         """
-.. method:: moveCursorLeft(position)
-    Move cursor left n position
+            .. method:: moveCursorLeft(position)
+
+                Move cursor left n position
         """
         if p > 0:
             n = 0
@@ -261,8 +276,9 @@ The serLCD class
 
     def scrollRight(self, position, time=0):
         """
-.. method:: scrollRight(position,time=0):
-    Scrolls the text on the LCD n positions to the right each time millisecond
+            .. method:: scrollRight(position,time=0):
+
+                Scrolls the text on the LCD n positions to the right each time millisecond
         """
         if position > 0:
             n = 0
@@ -277,8 +293,9 @@ The serLCD class
 
     def scrollLeft(self, position, time=0):
         """
-.. method:: scrollLeft(position,time=0)
-    Scrolls the text on the LCD n positions to the left each time millisecond
+            .. method:: scrollLeft(position,time=0)
+
+                Scrolls the text on the LCD n positions to the left each time millisecond
         """
         if position > 0:
             n = 0
@@ -293,8 +310,9 @@ The serLCD class
 
     def setType(self, lines, chars):
         """
-.. method:: setType(lines,chars)
-    The SerLCD firmware v2.5 supports setting different types of LCD's. This function allows to easily set the type of LCD.
+            .. method:: setType(lines,chars)
+
+                The SerLCD firmware v2.5 supports setting different types of LCD's. This function allows to easily set the type of LCD.
         """
         if lines==2:
             self._specialCommand(self.LCD_SET2LINE)
@@ -316,8 +334,9 @@ The serLCD class
 
     def writeNextLine(self, text):
         """
-.. method:: writeNextLine(text):
-    Insert the text in new line and moves upwards the text on the LCD
+            .. method:: writeNextLine(text):
+
+                Insert the text in new line and moves upwards the text on the LCD
         """
         if len(text)<=40:
             for i in range((self._numLines-1)):
@@ -330,8 +349,9 @@ The serLCD class
 
     def writeLine(self, line, text):
         """
-.. method:: writeLine(line,text)
-    Insert the text in the specification row
+            .. method:: writeLine(line,text)
+
+                Insert the text in the specification row
         """
         if line<=self._numLines and len(text)<=40:
             self.clearLine(line)
@@ -354,8 +374,9 @@ The serLCD class
 
     def scrollingRightToLeft(self, speed, delay):
         """
-.. method:: scrollingRightToLeft(speed, delay):
-    Move the text on the LCD from right to left and contrary of n steps if the text exceeds the maximum capacity of line
+            .. method:: scrollingRightToLeft(speed, delay):
+
+                Move the text on the LCD from right to left and contrary of n steps if the text exceeds the maximum capacity of line
         """
         while True:
             self.scrollRight(self._lenghTextLine[0]-self._numColumns, speed)
@@ -365,8 +386,9 @@ The serLCD class
 
     def scrollingLeftToRight(self, speed, delay):
         """
-.. method:: scrollingLeftToRight(speed, delay):
-    Move the text on the LCD from left to right and contrary of n steps if the text exceeds the maximum capacity of line
+            .. method:: scrollingLeftToRight(speed, delay):
+
+                Move the text on the LCD from left to right and contrary of n steps if the text exceeds the maximum capacity of line
         """
         while True:
             self.scrollLeft(self._lenghTextLine[0] - self._numColumns, speed)
@@ -376,8 +398,9 @@ The serLCD class
 
     def scrolling(self, speed):
         """
-.. method:: scrolling(speed)
-    Scrolls the text on the LCD a position to the right each time millisecond
+            .. method:: scrolling(speed)
+
+                Scrolls the text on the LCD a position to the right each time millisecond
         """
         while True:
             self.scrollRight(1, speed)

@@ -101,165 +101,171 @@
             
   <span class="target" id="module-serLCD"></span><div class="section" id="serlcd">
 <h1>serLCD<a class="headerlink" href="#serlcd" title="Permalink to this headline">¶</a></h1>
-<p>This module implements the driver for LCD controller SparkFun Serial Enabled LCD Backpack.</p>
-<p>It implements most all functions from LiquidCrystal and added a few functions of my own</p>
-<p><a class="reference external" href="http://www.sparkfun.com/datasheets/LCD/SerLCD_V2_5.PDF">http://www.sparkfun.com/datasheets/LCD/SerLCD_V2_5.PDF</a>
-.. method:: blinkCursor()</p>
+<p>This module implements the driver for LCD controller SparkFun Serial Enabled LCD Backpack.
+It implements most all functions from LiquidCrystal and added a few functions of my own <a class="reference external" href="http://www.sparkfun.com/datasheets/LCD/SerLCD_V2_5.PDF">http://www.sparkfun.com/datasheets/LCD/SerLCD_V2_5.PDF</a></p>
 <blockquote>
-<div>Turn the blinking cursor on</div></blockquote>
+<div></div></blockquote>
+<dl class="class">
+<dt id="serLCD.serLCD">
+<em class="property">class </em><code class="descname">serLCD</code><span class="sig-paren">(</span><em>drivername</em><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.serLCD" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a serLCD instance for controlling a diplay with 2 lines and 16 character through a serial port(es. SERIAL1).
+The SerLCD currently supports 16 and 20 character wide screens with 2 or 4 lines of display configurable using the appropriate functions.</p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">streams</span>
+<span class="kn">import</span> <span class="nn">serLCD</span>
+
+<span class="n">error</span><span class="o">=</span><span class="n">streams</span><span class="o">.</span><span class="n">serial</span><span class="p">()</span>
+<span class="k">try</span><span class="p">:</span>
+
+    <span class="n">lcd</span><span class="o">=</span><span class="n">serLCD</span><span class="o">.</span><span class="n">lcd</span><span class="p">(</span><span class="n">SERIAL1</span><span class="p">)</span>
+    <span class="n">lcd</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="n">lcd</span><span class="o">.</span><span class="n">home</span><span class="p">()</span>
+    <span class="n">lcd</span><span class="o">.</span><span class="n">setType</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">lcd</span><span class="o">.</span><span class="n">writeLine</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="s">&#39;1234567890&#39;</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">,</span><span class="n">stream</span><span class="o">=</span><span class="n">error</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="serLCD.blinkCursor">
+<code class="descname">blinkCursor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.blinkCursor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Turn the blinking cursor on</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="serLCD.brightness">
 <code class="descname">brightness</code><span class="sig-paren">(</span><em>brightness_level</em><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.brightness" title="Permalink to this definition">¶</a></dt>
-<dt>
-<code class="descname">Sets the backlight brightness based on input value. Values range from 1-30. 1=off---30=full brightness</code></dt>
-<dd></dd></dl>
+<dd><p>Sets the backlight brightness based on input value. Values range from 1-30. 1=off&#8212;30=full brightness</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="serLCD.clear">
 <code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.clear" title="Permalink to this definition">¶</a></dt>
-<dt>
-<code class="descname">Clear lcd and set to home</code></dt>
-<dd></dd></dl>
+<dd><p>Clear lcd and set to home</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="serLCD.clearLine">
 <code class="descname">clearLine</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.clearLine" title="Permalink to this definition">¶</a></dt>
-<dt>
-<code class="descname">Clears a single line by writing black spaces then returing cursor to beginning on line.</code></dt>
-<dd></dd></dl>
+<dd><p>Clears a single line by writing black spaces then returing cursor to beginning on line.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="serLCD.cursor">
 <code class="descname">cursor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.cursor" title="Permalink to this definition">¶</a></dt>
-<dt>
-<code class="descname">Turns the underline cursor on</code></dt>
-<dd></dd></dl>
+<dd><p>Turns the underline cursor on</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="serLCD.noCursor">
 <code class="descname">noCursor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.noCursor" title="Permalink to this definition">¶</a></dt>
-<dt>
-<code class="descname">Turns the underline cursor off</code></dt>
-<dd></dd></dl>
+<dd><p>Turns the underline cursor off</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="serLCD.setCursor">
 <code class="descname">setCursor</code><span class="sig-paren">(</span><em>row</em>, <em>col</em><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.setCursor" title="Permalink to this definition">¶</a></dt>
-<dt>
-<code class="descname">Set cursor to specific row and col (start:0)</code></dt>
-<dd></dd></dl>
+<dd><p>Set cursor to specific row and col (start:0)</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="serLCD.display">
 <code class="descname">display</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.display" title="Permalink to this definition">¶</a></dt>
-<dt>
-<code class="descname">Turn the display on (quickly)</code></dt>
-<dd></dd></dl>
+<dd><p>Turn the display on (quickly)</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="serLCD.noDisplay">
 <code class="descname">noDisplay</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.noDisplay" title="Permalink to this definition">¶</a></dt>
-<dt>
-<code class="descname">Turn the display off (quickly)</code></dt>
-<dd></dd></dl>
+<dd><p>Turn the display off (quickly)</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="serLCD.home">
 <code class="descname">home</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.home" title="Permalink to this definition">¶</a></dt>
-<dt>
-<code class="descname">Returns cursor to home position</code></dt>
-<dd></dd></dl>
+<dd><p>Returns cursor to home position</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="serLCD.leftToRight">
 <code class="descname">leftToRight</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.leftToRight" title="Permalink to this definition">¶</a></dt>
-<dt>
-<code class="descname">This is for text that flows Left to Right</code></dt>
-<dd></dd></dl>
+<dd><p>This is for text that flows Left to Right</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="serLCD.rightToLeft">
 <code class="descname">rightToLeft</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.rightToLeft" title="Permalink to this definition">¶</a></dt>
-<dt>
-<code class="descname">This is for text that flows Right to Left</code></dt>
-<dd></dd></dl>
+<dd><p>This is for text that flows Right to Left</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="serLCD.message">
 <code class="descname">message</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.message" title="Permalink to this definition">¶</a></dt>
-<dt>
-<code class="descname">Send string to LCD. Newline wraps to second line</code></dt>
-<dd></dd></dl>
+<dd><p>Send string to LCD. Newline wraps to second line</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="serLCD.moveCursorRight">
 <code class="descname">moveCursorRight</code><span class="sig-paren">(</span><em>position</em><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.moveCursorRight" title="Permalink to this definition">¶</a></dt>
-<dt>
-<code class="descname">Move cursor right n position</code></dt>
-<dd></dd></dl>
+<dd><p>Move cursor right n position</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="serLCD.moveCursorLeft">
 <code class="descname">moveCursorLeft</code><span class="sig-paren">(</span><em>position</em><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.moveCursorLeft" title="Permalink to this definition">¶</a></dt>
-<dt>
-<code class="descname">Move cursor left n position</code></dt>
-<dd></dd></dl>
+<dd><p>Move cursor left n position</p>
+</dd></dl>
 
 <dl class="method">
 <dt>
 <code class="descname">scrollRight(position,time=0):</code></dt>
-<dt>
-<code class="descname">Scrolls the text on the LCD n positions to the right each time millisecond</code></dt>
-<dd></dd></dl>
+<dd><p>Scrolls the text on the LCD n positions to the right each time millisecond</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="serLCD.scrollLeft">
 <code class="descname">scrollLeft</code><span class="sig-paren">(</span><em>position</em>, <em>time=0</em><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.scrollLeft" title="Permalink to this definition">¶</a></dt>
-<dt>
-<code class="descname">Scrolls the text on the LCD n positions to the left each time millisecond</code></dt>
-<dd></dd></dl>
+<dd><p>Scrolls the text on the LCD n positions to the left each time millisecond</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="serLCD.setType">
 <code class="descname">setType</code><span class="sig-paren">(</span><em>lines</em>, <em>chars</em><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.setType" title="Permalink to this definition">¶</a></dt>
-<dt>
-<code class="descname">The SerLCD firmware v2.5 supports setting different types of LCD's. This function allows to easily set the type of LCD.</code></dt>
-<dd></dd></dl>
+<dd><p>The SerLCD firmware v2.5 supports setting different types of LCD&#8217;s. This function allows to easily set the type of LCD.</p>
+</dd></dl>
 
 <dl class="method">
 <dt>
 <code class="descname">writeNextLine(text):</code></dt>
-<dt>
-<code class="descname">Insert the text in new line and moves upwards the text on the LCD</code></dt>
-<dd></dd></dl>
+<dd><p>Insert the text in new line and moves upwards the text on the LCD</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="serLCD.writeLine">
 <code class="descname">writeLine</code><span class="sig-paren">(</span><em>line</em>, <em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.writeLine" title="Permalink to this definition">¶</a></dt>
-<dt>
-<code class="descname">Insert the text in the specification row</code></dt>
-<dd></dd></dl>
+<dd><p>Insert the text in the specification row</p>
+</dd></dl>
 
 <dl class="method">
 <dt>
 <code class="descname">scrollingRightToLeft(speed, delay):</code></dt>
-<dt>
-<code class="descname">Move the text on the LCD from right to left and contrary of n steps if the text exceeds the maximum capacity of line</code></dt>
-<dd></dd></dl>
+<dd><p>Move the text on the LCD from right to left and contrary of n steps if the text exceeds the maximum capacity of line</p>
+</dd></dl>
 
 <dl class="method">
 <dt>
 <code class="descname">scrollingLeftToRight(speed, delay):</code></dt>
-<dt>
-<code class="descname">Move the text on the LCD from left to right and contrary of n steps if the text exceeds the maximum capacity of line</code></dt>
-<dd></dd></dl>
+<dd><p>Move the text on the LCD from left to right and contrary of n steps if the text exceeds the maximum capacity of line</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="serLCD.scrolling">
 <code class="descname">scrolling</code><span class="sig-paren">(</span><em>speed</em><span class="sig-paren">)</span><a class="headerlink" href="#serLCD.scrolling" title="Permalink to this definition">¶</a></dt>
-<dt>
-<code class="descname">Scrolls the text on the LCD a position to the right each time millisecond</code></dt>
-<dd></dd></dl>
+<dd><p>Scrolls the text on the LCD a position to the right each time millisecond</p>
+</dd></dl>
 
 </div>
 
